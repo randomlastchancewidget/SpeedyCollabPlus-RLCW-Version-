@@ -5,5 +5,4 @@ pydub
 pyaudio
 audioop-lts
 librosa
-app
 pygame
