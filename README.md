@@ -47,12 +47,10 @@ This will launch the UI where you can select a video file, input the number of i
 
 This is still a WIP! Will try to implement features from newer versions (if they ever release)
 
-### How to Submit an Issue
+### Found a bug/issue?
 
-1. Go to the [GitHub repository](https://github.com/bluemars72/SpeedyCollab)
-2. Click on the **Issues** tab.
-3. Click the **New Issue** button.
-4. Fill in the details of your suggestion or bug report, and submit it!
+Submit issues [here](https://github.com/saladhub/SpeedyCollabPlus/issues)!
+
 
 Thank you for your interest in the project!
 
