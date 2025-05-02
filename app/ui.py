@@ -18,7 +18,7 @@ import traceback
 class VideoUI:
     def __init__(self):
         self.root = TkinterDnD.Tk()
-        self.root.title("Video Tool")
+        self.root.title("SpeedyCollab Plus")
         self.root.geometry("600x800")
         self.selected_file = None
 
@@ -35,7 +35,7 @@ class VideoUI:
         assets_folder = os.path.join(project_root, '..', 'assets')  # Go up one level and into 'assets'
 
         # Now construct the full path to the logo.png
-        logo_path = os.path.join(assets_folder, 'logo.png')
+        logo_path = os.path.join(assets_folder, 'SpeedyCollabLogo.png')
         self.image = Image.open(logo_path)  # Corrected path
         self.image = self.image.resize((150, 150))  # Resize the image to fit the UI
         self.image_tk = ImageTk.PhotoImage(self.image)
