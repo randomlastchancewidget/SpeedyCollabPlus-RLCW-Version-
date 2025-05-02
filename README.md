@@ -1,6 +1,6 @@
-# SpeedyCollab
+# SpeedyCollab Plus
 
-SpeedyCollab is a video editing tool by Blue Mars with a simple UI built using Python. It uses moviepy and pydub to speed up videos and adjust the pitch for speed videos. 
+SpeedyCollab Plus is a video editing tool by Blue Mars, Salad and ChatGPT.
 
 This is still a work in progress so it may be buggy! It also creates a bunch of temp files in a /tmp folder that you will need to delete when you're done. If you try to run too many iterations it may take a long time.
 
