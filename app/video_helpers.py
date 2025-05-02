@@ -1,8 +1,9 @@
 import os
 import re
-from moviepy import (VideoFileClip, TextClip, AudioFileClip,
+from moviepy import (VideoFileClip, AudioFileClip,
                      CompositeVideoClip, concatenate_videoclips)
 from moviepy.video.fx import *
+from moviepy.video.VideoClip import TextClip
 from pydub import AudioSegment
 
 import librosa
@@ -21,31 +22,18 @@ def clean_temp_folder(path, pattern=None):
                 os.remove(file_path)
                 print(f"Deleted: {file_path}")
 
-def put_text_on_video(clip, text_to_write, font_size,
-                      duration=None, font=None, color=None):
-    if not duration:
-        duration = clip.duration
-    if not font:
-        font="C:\\Windows\\Fonts\\Arial.ttf"
-    if not color:
-        color = 'red'
-
-    # Generate a text clip. You can customize the font, color, etc.
-
-    txt_clip = TextClip(
-        font=font,
-        text=text_to_write,
-        font_size=font_size,
+def put_text_on_video(video_clip, text_to_write, font_size, color, font):
+    """Overlay text on a video clip."""
+    text_clip = TextClip(
+        text_to_write,
+        fontsize=font_size,
         color=color,
-        stroke_color="black",
-        stroke_width=8,
-        horizontal_align="top"
-    ).with_duration(duration).with_position('center')
+        font=font  # Use the selected font
+    ).set_duration(video_clip.duration)
 
-    # Overlay the text clip on the first video clip
-    final_video = CompositeVideoClip([clip, txt_clip])
-
-    return final_video
+    return video_clip.set_position("center").set_duration(video_clip.duration).fx(
+        lambda clip: clip.overlay(text_clip)
+    )
 
 def speed_up_video_with_pitch(input_clip, speed_amount=2):
     semitones= -12

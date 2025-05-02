@@ -2,6 +2,7 @@ import os
 import sys
 import tkinter as tk
 from tkinter import filedialog, messagebox
+from tkinter import font
 from tkinterdnd2 import DND_FILES, TkinterDnD
 from tkinter import ttk  # Import ttk for the progress bar
 from PIL import Image, ImageTk
@@ -64,6 +65,21 @@ class VideoUI:
         self.text_color_menu = tk.OptionMenu(self.root, self.text_color_var, *self.color_options)
         self.text_color_menu.config(font=self.default_font)
         self.text_color_menu.pack(pady=5)
+
+        # Dropdown for font selection
+        self.font_label = tk.Label(self.root, text="Select Font:", font=self.default_font)
+        self.font_label.pack(pady=5)
+
+        # Load fonts from C:/Windows/Fonts
+        fonts_dir = "C:/Windows/Fonts"
+        available_fonts = [f.split(".")[0] for f in os.listdir(fonts_dir) if f.endswith(".ttf")]
+
+        self.font_var = tk.StringVar(self.root)
+        self.font_var.set("Arial")  # Default font
+
+        self.font_menu = tk.OptionMenu(self.root, self.font_var, *available_fonts)
+        self.font_menu.config(font=self.default_font)
+        self.font_menu.pack(pady=5)
 
         # Label for Starting Number
         self.starting_number_label = tk.Label(self.root, text="Enter the Starting Number:", font=self.default_font)
@@ -270,10 +286,13 @@ class VideoUI:
                 if self.text_color.lower() == 'random':
                     valid_colors = [c for c in self.color_options if c.lower() != "random"]
                     self.text_color = random.choice(valid_colors)
-                clip_with_number = video_helpers.put_text_on_video(sped_up_clip,
-                                                                   text_to_write=f"{version_number}",
-                                                                   font_size=150,
-                                                                   color=self.text_color)
+                clip_with_number = video_helpers.put_text_on_video(
+                    sped_up_clip,
+                    text_to_write=f"{version_number}",
+                    font_size=150,
+                    color=self.text_color,
+                    font=self.font_var.get()  # Pass the selected font
+                )
                 if len(files) == files_cap_limit:
                     print(f"Hit files cap limit on loop: {i}")
                     stub_clip = concatenate_videoclips(files)
