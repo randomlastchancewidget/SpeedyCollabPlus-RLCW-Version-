@@ -115,3 +115,5 @@ Thank you for your interest in the project!
 
 [Blue Mars' channel](https://www.youtube.com/@bluemars72)
 [Salad's channel](https://www.youtube.com/@Rand0mGuyFR_)
+
+> saladhub, 2025-2025
