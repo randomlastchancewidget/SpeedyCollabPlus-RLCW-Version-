@@ -23,17 +23,31 @@ def clean_temp_folder(path, pattern=None):
                 print(f"Deleted: {file_path}")
 
 def put_text_on_video(video_clip, text_to_write, font_size, color, font):
-    """Overlay text on a video clip."""
+    """Overlay text on a video clip with centered alignment and an outline."""
+    # Create the main text clip
     text_clip = TextClip(
-        text_to_write,
-        fontsize=font_size,
+        text=text_to_write,
+        font_size=font_size,
         color=color,
-        font=font  # Use the selected font
-    ).set_duration(video_clip.duration)
+        font=font
+    ).with_duration(video_clip.duration)
 
-    return video_clip.set_position("center").set_duration(video_clip.duration).fx(
-        lambda clip: clip.overlay(text_clip)
-    )
+    # Create an outline for the text by duplicating it with a thicker stroke
+    outline_clip = TextClip(
+        text=text_to_write,
+        font_size=font_size,
+        color="black",  # Outline color
+        font=font,
+        stroke_color="black",  # Stroke color
+        stroke_width=3  # Thickness of the outline
+    ).with_duration(video_clip.duration)
+
+    # Position both the text and outline in the center
+    outline_clip = outline_clip.with_position("center")
+    text_clip = text_clip.with_position("center")
+
+    # Combine the outline and text on top of the video
+    return CompositeVideoClip([video_clip, outline_clip, text_clip])
 
 def speed_up_video_with_pitch(input_clip, speed_amount=2):
     semitones= -12
