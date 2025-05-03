@@ -22,13 +22,14 @@ def clean_temp_folder(path, pattern=None):
                 os.remove(file_path)
                 print(f"Deleted: {file_path}")
 
-def put_text_on_video(video_clip, text_to_write, font_size, color, font):
+def put_text_on_video(video_clip, text_to_write, font_size, color, font, position):
     """Overlay text on a video clip with centered alignment and an outline."""
     # Create the main text clip
     text_clip = TextClip(
         text=text_to_write,
         font_size=font_size,
         color=color,
+        text_align="center",
         font=font
     ).with_duration(video_clip.duration)
 
@@ -36,15 +37,16 @@ def put_text_on_video(video_clip, text_to_write, font_size, color, font):
     outline_clip = TextClip(
         text=text_to_write,
         font_size=font_size,
-        color="black",  # Outline color
+        color="black",
+        text_align="center",  # Outline color
         font=font,
         stroke_color="black",  # Stroke color
         stroke_width=3  # Thickness of the outline
     ).with_duration(video_clip.duration)
 
     # Position both the text and outline in the center
-    outline_clip = outline_clip.with_position("center")
-    text_clip = text_clip.with_position("center")
+    outline_clip = outline_clip.with_position(position)
+    text_clip = text_clip.with_position(position)
 
     # Combine the outline and text on top of the video
     return CompositeVideoClip([video_clip, outline_clip, text_clip])

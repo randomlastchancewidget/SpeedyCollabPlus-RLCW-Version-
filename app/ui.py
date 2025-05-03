@@ -28,7 +28,6 @@ class VideoUI:
         self.root = TkinterDnD.Tk()
         self.root.title("SpeedyCollab Plus")
         self.root.geometry("850x900")
-        self.root.resizable(False, False)  # Disable resizing
         self.root.configure(bg="dark green")  # Set background color to dark green
         # Define a bigger font size for everything
         self.default_font = font.Font(family="Helvetica", size=12)
@@ -130,6 +129,17 @@ class VideoUI:
         self.text_color_menu.config(font=self.default_font)
         self.text_color_menu.pack(pady=5)
 
+        self.text_pos_label = tk.Label(font_settings_frame, text="Text Position:", font=self.default_font)
+        self.text_pos_label.pack(pady=5)
+
+        self.text_pos_var = tk.StringVar(font_settings_frame)
+        self.text_pos_var.set("center")  # default value
+
+        self.pos_options = ["center", "top", "left", "bottom", "right"]
+        self.text_pos_menu = tk.OptionMenu(font_settings_frame, self.text_pos_var, *self.pos_options)
+        self.text_pos_menu.config(font=self.default_font)
+        self.text_pos_menu.pack(pady=5)
+
         # Dropdown for font selection
         self.font_label = tk.Label(font_settings_frame, text="Select Font:", font=self.default_font)
         self.font_label.pack(pady=5)
@@ -159,6 +169,24 @@ class VideoUI:
             font=self.default_font
         )
         self.font_size_slider.pack(pady=10)
+
+        # Toggle for custom last iteration message
+        self.custom_message_var = tk.BooleanVar(value=False)
+        self.custom_message_checkbox = tk.Checkbutton(
+            font_settings_frame,
+            text="Enable Custom Last Iteration Message",
+            variable=self.custom_message_var,
+            font=self.default_font
+        )
+        self.custom_message_checkbox.pack(pady=5)
+
+        # Entry for custom last iteration message
+        self.custom_message_label = tk.Label(font_settings_frame, text="Custom Last Iteration Message:", font=self.default_font)
+        self.custom_message_label.pack(pady=5)
+
+        self.custom_message_entry = tk.Entry(font_settings_frame, font=self.default_font)
+        self.custom_message_entry.pack(pady=5)
+        self.custom_message_entry.insert(0, "UR NEXT!")  # Default message
 
         # Number settings group
         number_settings_frame = ttk.LabelFrame(self.scrollable_frame, text="Number Settings", padding=10)
@@ -369,12 +397,20 @@ class VideoUI:
                 if self.text_color.lower() == 'random':
                     valid_colors = [c for c in self.color_options if c.lower() != "random"]
                     self.text_color = random.choice(valid_colors)
+
+                # Check if it's the last iteration and if the custom message is enabled
+                if i == max_iterations - 1 and self.custom_message_var.get():
+                    text_to_write = f"{version_number}\n{self.custom_message_entry.get()}"  # Use the custom message
+                else:
+                    text_to_write = f"{version_number}"  # Default numbering
+
                 clip_with_number = video_helpers.put_text_on_video(
                     sped_up_clip,
-                    text_to_write=f"{version_number}",
+                    text_to_write=text_to_write,
                     font_size=self.font_size_var.get(),  # Use the selected font size
                     color=self.text_color,
-                    font=self.font_var.get()  # Pass the selected font
+                    font=self.font_var.get(),
+                    position=self.text_pos_var.get()  # Pass the selected font
                 )
                 if len(files) == files_cap_limit:
                     print(f"Hit files cap limit on loop: {i}")
