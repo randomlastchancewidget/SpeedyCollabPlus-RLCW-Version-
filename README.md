@@ -4,6 +4,8 @@ SpeedyCollab Plus is a video editing tool by Blue Mars and Salad.
 
 This is still a work in progress so it may be buggy! It also creates a bunch of temp files in a /tmp folder that you will need to delete when you're done. If you try to run too many iterations it may take a long time.
 
+## The wiki
+For more advanced information, I recommend checking out [our wiki](https://github.com/saladhub/SpeedyCollabPlus/wiki)!
 ## Installation
 
 Get a version of the program [here](https://github.com/saladhub/SpeedyCollabPlus/releases)!
@@ -60,3 +62,4 @@ Thank you for your interest in the project!
 [Salad's channel](https://www.youtube.com/@Rand0mGuyFR_)
 
 > saladhub, 2025-2025
+
