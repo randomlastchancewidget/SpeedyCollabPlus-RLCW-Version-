@@ -5,7 +5,7 @@ SpeedyCollab Plus is a video editing tool by Blue Mars and Salad.
 This is still a work in progress so it may be buggy! It also creates a bunch of temp files in a /tmp folder that you will need to delete when you're done. If you try to run too many iterations it may take a long time.
 
 ## The wiki
-For more advanced information, I recommend checking out [our wiki](https://github.com/saladhub/SpeedyCollabPlus/wiki)!
+Go to the [original version](https://github.com/saladhub/SpeedyCollabPlus).
 ## Installation
 
 Get a version of the program [here](https://github.com/saladhub/SpeedyCollabPlus/releases)!
@@ -56,7 +56,7 @@ Submit issues [here](https://github.com/saladhub/SpeedyCollabPlus/issues)!
 
 Thank you for your interest in the project!
 
-### Subscribe to us!
+### Subscribe to those guys who started the Python Speedy Collabing.
 
 [Blue Mars' channel](https://www.youtube.com/@bluemars72)
 [Salad's channel](https://www.youtube.com/@Rand0mGuyFR_)
