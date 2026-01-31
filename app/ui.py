@@ -140,30 +140,6 @@ class VideoUI:
         self.text_pos_menu.config(font=self.default_font)
         self.text_pos_menu.pack(pady=5)
 
-        # Special pitches input (before normal pitch)
-        special_pitch_input = input("Use special pitches? (N/Y)?: ").strip().upper()
-        if special_pitch_input == 'Y':
-            enable_special_pitch = True
-            enable_pitch = True
-            print("  ✓ Special pitches enabled: +7st, -5st, +7st, -5st, ...")
-        elif special_pitch_input == 'N':
-            enable_special_pitch = False
-            pitch_input = input("Set Pitch Increase (N/Y)?: ").strip().upper()
-            if pitch_input not in ['N', 'Y']:
-                print("  Invalid input, defaulting to N")
-                enable_pitch = False
-            else:
-                enable_pitch = pitch_input == 'Y'
-        else:
-            print("  Invalid input, defaulting to N")
-            enable_special_pitch = False
-            pitch_input = input("Set Pitch Increase (N/Y)?: ").strip().upper()
-            if pitch_input not in ['N', 'Y']:
-                print("  Invalid input, defaulting to N")
-                enable_pitch = False
-            else:
-                enable_pitch = pitch_input == 'Y'
-        
         # Dropdown for font selection
         self.font_label = tk.Label(font_settings_frame, text="Select Font:", font=self.default_font)
         self.font_label.pack(pady=5)
