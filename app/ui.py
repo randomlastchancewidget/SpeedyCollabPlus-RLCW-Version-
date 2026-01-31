@@ -89,7 +89,7 @@ class VideoUI:
         assets_folder = os.path.join(project_root, '..', 'assets')  # Go up one level and into 'assets'
 
         # Now construct the full path to the logo.png
-        logo_path = os.path.join(assets_folder, 'SpeedyCollabLogoRLCWsTake.png')
+        logo_path = os.path.join(assets_folder, '2026_01_31_0r3_Kleki.png')
         self.image = Image.open(logo_path)  # Corrected path
         self.image = self.image.resize((150, 150))  # Resize the image to fit the UI
         self.image_tk = ImageTk.PhotoImage(self.image)
