@@ -124,7 +124,7 @@ class VideoUI:
         self.text_color_var = tk.StringVar(font_settings_frame)
         self.text_color_var.set("Red")  # default value
 
-        self.color_options = ["Red", "White", "Blue", "Pink", "Yellow", "Orange", "Green", "Purple", "Random"]
+        self.color_options = ["Red", "#ab0000", "White", "Blue", "Pink", "Yellow", "Orange", "Green", "#00ffff", "Purple", "Random"]
         self.text_color_menu = tk.OptionMenu(font_settings_frame, self.text_color_var, *self.color_options)
         self.text_color_menu.config(font=self.default_font)
         self.text_color_menu.pack(pady=5)
@@ -186,7 +186,7 @@ class VideoUI:
 
         self.custom_message_entry = tk.Entry(font_settings_frame, font=self.default_font)
         self.custom_message_entry.pack(pady=5)
-        self.custom_message_entry.insert(0, "UR NEXT!")  # Default message
+        self.custom_message_entry.insert(0, "Yay!")  # Default message
 
         # Number settings group
         number_settings_frame = ttk.LabelFrame(self.scrollable_frame, text="Number Settings", padding=10)
@@ -213,7 +213,7 @@ class VideoUI:
         self.number_entry = tk.Entry(number_settings_frame, font=self.default_font, validate="key",
                                      validatecommand=(validate_command, '%P'))
         self.number_entry.pack(pady=10)
-        self.number_entry.insert(0, "72")  # Default value for number of iterations
+        self.number_entry.insert(0, "190")  # Default value for number of iterations
 
         # Label for output file name input
         self.output_filename_label = tk.Label(number_settings_frame, text="Enter the output file name:", font=self.default_font)
