@@ -54,6 +54,8 @@ def put_text_on_video(video_clip, text_to_write, font_size, color, font, positio
 def speed_up_video_with_pitch(input_clip, speed_amount=2):
     semitones= -12
 
+doubled_audio_clip = music.with_effects([afx.MultiplyVolume(2)])
+  
     clip = input_clip
 
     new_clip = MultiplySpeed(factor=speed_amount).apply(clip)
