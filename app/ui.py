@@ -124,7 +124,7 @@ class VideoUI:
         self.text_color_var = tk.StringVar(font_settings_frame)
         self.text_color_var.set("Red")  # default value
 
-        self.color_options = ["Red", "#ab0000", "White", "Blue", "Pink", "Yellow", "Orange", "Green", "#00ffff", "Purple", "Random"]
+        self.color_options = ["Red", "White", "Blue", "Pink", "Yellow", "Orange", "Green", "Purple", "Random"]
         self.text_color_menu = tk.OptionMenu(font_settings_frame, self.text_color_var, *self.color_options)
         self.text_color_menu.config(font=self.default_font)
         self.text_color_menu.pack(pady=5)
