@@ -53,7 +53,7 @@ def put_text_on_video(video_clip, text_to_write, font_size, color, font, positio
 
 def speed_up_video_with_pitch(input_clip, speed_amount=2):
 
-    semitones= -13
+    semitones= 0
   
     clip = input_clip
 
